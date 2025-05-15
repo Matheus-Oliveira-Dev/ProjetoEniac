@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class Cadastre_se extends AppCompatActivity implements View.OnClickListener {
+public class Cadastrar extends AppCompatActivity implements View.OnClickListener {
     EditText txtCadNome, txtCadCPF, txtCadEmail, txtCadSenha, txtCadConfSenha;
     Button btCadSalvar;
 
@@ -18,7 +18,7 @@ public class Cadastre_se extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastre_se);
+        setContentView(R.layout.activity_cadastrar);
 
 
         txtCadNome      = findViewById(R.id.txtCadNome);

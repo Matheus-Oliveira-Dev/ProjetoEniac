@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ProjetoEniac</string>
+
+    <string-array name="opcoes_especie">
+        <item>Selecione a espécie</item>
+        <item>Cachorro</item>
+        <item>Gato</item>
+    </string-array>
+
+    <string-array name="opcoes_porte">
+        <item>Selecione o porte</item>
+        <item>Pequeno</item>
+        <item>Médio</item>
+        <item>Grande</item>
+    </string-array>
 </resources>
+
