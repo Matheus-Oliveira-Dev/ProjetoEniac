@@ -5,55 +5,53 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
 public class BancoControllerUsuarios {
     private SQLiteDatabase db;
     private CriaBanco banco;
-
 
     public BancoControllerUsuarios(Context context) {
         banco = new CriaBanco(context);
     }
 
-
     public String insereDados(String _nome, String _cpf, String _email, String _senha ) {
-        ContentValues valores;
-        long resultado;
-        db = banco.getWritableDatabase();
-
-
-        valores = new ContentValues();
+        ContentValues valores = new ContentValues();
         valores.put("nome", _nome);
         valores.put("cpf", _cpf);
         valores.put("email", _email);
         valores.put("senha", _senha);
 
-
-        resultado = db.insert("usuarios", null, valores);
+        db = banco.getWritableDatabase();
+        long resultado = db.insert("usuarios", null, valores);
         db.close();
 
-
-        if (resultado == -1)
-            return "Erro ao efetuar o Cadastre-se";
-        else
-            return "Cadastro efetuado com sucesso";
+        return (resultado == -1) ? "Erro ao efetuar o Cadastre-se" : "Cadastro efetuado com sucesso";
     }
 
-
-    public Cursor ConsultaDadosLogin(String _email, String _senha){
-        Cursor cursor;
+    public Cursor ConsultaDadosLogin(String _email, String _senha) {
         String[] campos = { "codigo","nome","cpf","email","senha"};
-        String where = "email = '" + _email + "' and senha = '" + _senha + "'";
+        String where = "email = ? AND senha = ?";
         db = banco.getReadableDatabase();
-
-
-        // select * from usuarios where email = 'digitado' and senha = 'senha'
-        cursor = db.query("usuarios", campos, where, null, null, null,
-                null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-        }
+        Cursor cursor = db.query("usuarios", campos, where, new String[]{_email, _senha}, null, null, null);
+        if (cursor != null) cursor.moveToFirst();
         db.close();
         return cursor;
+    }
+
+    public boolean verificarEmail(String email) {
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE email = ?", new String[]{email});
+        boolean existe = (cursor.getCount() > 0);
+        cursor.close();
+        db.close();
+        return existe;
+    }
+
+    public boolean atualizarSenha(String email, String novaSenha) {
+        db = banco.getWritableDatabase();
+        ContentValues valores = new ContentValues();
+        valores.put("senha", novaSenha);
+        int linhasAfetadas = db.update("usuarios", valores, "email = ?", new String[]{email});
+        db.close();
+        return linhasAfetadas > 0;
     }
 }
