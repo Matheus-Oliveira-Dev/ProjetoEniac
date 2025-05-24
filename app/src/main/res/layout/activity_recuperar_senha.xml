@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recuperação de Senha"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="200dp"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite seu e-mail"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/btn_recuperar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recuperar Senha"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"/>
+</LinearLayout>

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CriaBanco extends SQLiteOpenHelper {
 
     private static final String NOME_BANCO = "banco_exemplo.db";
-    private static final int VERSAO = 2; // Se mudar algo na estrutura, aumente a versão!
+    private static final int VERSAO = 2;
 
     public CriaBanco(Context context) {
         super(context, NOME_BANCO, null, VERSAO);
@@ -15,21 +15,18 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Tabela de contatos (se ainda for usada)
         db.execSQL("CREATE TABLE IF NOT EXISTS contatos (" +
                 "codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT," +
                 "email TEXT)");
 
-        // Tabela de usuários
         db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (" +
                 "codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nome TEXT," +
-                "cpf TEXT," +
-                "email TEXT," +
-                "senha TEXT)");
+                "nome TEXT NOT NULL," +
+                "cpf TEXT NOT NULL," +
+                "email TEXT NOT NULL UNIQUE," +
+                "senha TEXT NOT NULL)");
 
-        // ✅ Nova tabela de animais
         db.execSQL("CREATE TABLE IF NOT EXISTS animais (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT," +
@@ -40,7 +37,6 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Cuidado: isso APAGA todos os dados antigos ao atualizar!
         db.execSQL("DROP TABLE IF EXISTS contatos");
         db.execSQL("DROP TABLE IF EXISTS usuarios");
         db.execSQL("DROP TABLE IF EXISTS animais");
