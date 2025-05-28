@@ -22,9 +22,6 @@
             android:name=".CadastrarAnimal"
             android:exported="false" />
         <activity
-            android:name=".PedidosDeAdocao"
-            android:exported="false" />
-        <activity
             android:name=".Pagina_Inicial"
             android:exported="false" />
         <activity
@@ -35,7 +32,8 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

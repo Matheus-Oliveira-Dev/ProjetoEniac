@@ -1,164 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:id="@+id/Cadastrar">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastro de Usuário"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tipo de Usuário:"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="10dp"/>
-
-    <RadioGroup
-        android:id="@+id/radioGroupUserType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-
-        <RadioButton
-            android:id="@+id/rbPessoaF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pessoa Física"
-            android:textSize="18dp"
-            android:checked="true"
-            android:layout_marginEnd="16dp"/>
-
-        <RadioButton
-            android:id="@+id/rbPessoaJ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="Pessoa Jurídica" />
-    </RadioGroup>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/layoutPessoaFisica"
+        android:id="@+id/Cadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:padding="16dp">
 
-        <EditText
-        android:id="@+id/txtNomePf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome Completo"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtCpfPf"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CPF"
-            android:inputType="number"
-            android:maxLength="11"
-            android:layout_marginBottom="8dp"/>
+            android:text="Cadastro de Usuário"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/txtDataPf"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Usuário:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupUserType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data de Nascimento (DD/MM/AAAA)"
-            android:inputType="date"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/txtEmailPf"
+            <RadioButton
+                android:id="@+id/rbPessoaF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pessoa Física"
+                android:textSize="18dp"
+                android:checked="true"
+                android:layout_marginEnd="16dp"/>
+
+            <RadioButton
+                android:id="@+id/rbPessoaJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Pessoa Jurídica" />
+        </RadioGroup>
+
+        <!-- Pessoa Física -->
+        <LinearLayout
+            android:id="@+id/layoutPessoaFisica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="vertical"
+            android:visibility="visible">
 
-        <EditText
-            android:id="@+id/txtTelefonePf"
+            <EditText
+                android:id="@+id/txtNomePf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome Completo"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtCpfPf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CPF"
+                android:inputType="number"
+                android:maxLength="11"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtDataPf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Data de Nascimento (DD/MM/AAAA)"
+                android:inputType="date"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtEmailPf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtTelefonePf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telefone"
+                android:inputType="phone"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtSenhaPf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtConfirmaSenhaPf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar Senha"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+
+        <!-- Pessoa Jurídica -->
+        <LinearLayout
+            android:id="@+id/layoutPessoaJuridica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefone"
-            android:inputType="phone"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="vertical"
+            android:visibility="gone">
 
+            <EditText
+                android:id="@+id/editTextRazaoSocialPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Razão Social"
+                android:inputType="textCapWords"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtNomePj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome Fantasia"
+                android:inputType="textCapWords"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtCnpjPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CNPJ"
+                android:inputType="number"
+                android:maxLength="14"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtInscricaoEstadualPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Inscrição Estadual (Opcional)"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtEmailPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail Corporativo"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtTelefonePj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telefone Comercial"
+                android:inputType="phone"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtSenhaPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/txtConfirmaSenhaPj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar Senha"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar"
+            android:textSize="25dp"
+            android:layout_marginTop="24dp"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutPessoaJuridica"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"> <EditText
-        android:id="@+id/editTextRazaoSocialPj"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Razão Social"
-        android:inputType="textCapWords"
-        android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtNomePj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nome Fantasia"
-            android:inputType="textCapWords"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtCnpjPj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CNPJ"
-            android:inputType="number"
-            android:maxLength="14"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtInscricaoEstadualPj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Inscrição Estadual (Opcional)"
-            android:inputType="number"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtEmailPj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="E-mail Corporativo"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/txtTelefonePj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Telefone Comercial"
-            android:inputType="phone"
-            android:layout_marginBottom="8dp"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btCadastrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        android:textSize="25dp"
-        android:layout_marginTop="24dp"/>
-
-</LinearLayout>
+</ScrollView>
