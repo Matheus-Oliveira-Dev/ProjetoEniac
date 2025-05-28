@@ -13,30 +13,51 @@ public class BancoControllerUsuarios {
         banco = new CriaBanco(context);
     }
 
-    public String insereDados(String _nome, String _cpf, String _email, String _senha ) {
+    // Inserir usuário PF ou PJ
+    public String insereDados(
+            String tipo,
+            String nome,
+            String cpf_cnpj,
+            String email,
+            String senha,
+            String data_nascimento,
+            String telefone,
+            String razao_social,
+            String nome_fantasia,
+            String inscricao_estadual) {
+
         ContentValues valores = new ContentValues();
-        valores.put("nome", _nome);
-        valores.put("cpf", _cpf);
-        valores.put("email", _email);
-        valores.put("senha", _senha);
+        valores.put("tipo", tipo);
+        valores.put("nome", nome);
+        valores.put("cpf_cnpj", cpf_cnpj);
+        valores.put("email", email);
+        valores.put("senha", senha);
+        valores.put("data_nascimento", data_nascimento);
+        valores.put("telefone", telefone);
+        valores.put("razao_social", razao_social);
+        valores.put("nome_fantasia", nome_fantasia);
+        valores.put("inscricao_estadual", inscricao_estadual);
 
         db = banco.getWritableDatabase();
         long resultado = db.insert("usuarios", null, valores);
         db.close();
 
-        return (resultado == -1) ? "Erro ao efetuar o Cadastre-se" : "Cadastro efetuado com sucesso";
+        return (resultado == -1) ? "Erro ao efetuar o cadastro" : "Cadastro efetuado com sucesso";
     }
 
-    public Cursor ConsultaDadosLogin(String _email, String _senha) {
-        String[] campos = { "codigo","nome","cpf","email","senha"};
-        String where = "email = ? AND senha = ?";
+    // Consulta login com email e senha e tipo (PF/PJ)
+    public Cursor ConsultaDadosLogin(String email, String senha, String tipo) {
+        String[] campos = { "codigo", "tipo", "nome", "cpf_cnpj", "email", "senha"};
+        String where = "email = ? AND senha = ? AND tipo = ?";
         db = banco.getReadableDatabase();
-        Cursor cursor = db.query("usuarios", campos, where, new String[]{_email, _senha}, null, null, null);
-        if (cursor != null) cursor.moveToFirst();
-        db.close();
+        Cursor cursor = db.query("usuarios", campos, where, new String[]{email, senha, tipo}, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        // Não fechar db aqui, senão cursor fica inválido
         return cursor;
     }
 
+    // Verifica se o email já existe (independente do tipo)
     public boolean verificarEmail(String email) {
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE email = ?", new String[]{email});

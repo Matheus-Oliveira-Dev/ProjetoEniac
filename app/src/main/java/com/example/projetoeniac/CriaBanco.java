@@ -15,31 +15,23 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS contatos (" +
-                "codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nome TEXT," +
-                "email TEXT)");
-
         db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (" +
                 "codigo INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "tipo TEXT NOT NULL," +               // PF ou PJ
                 "nome TEXT NOT NULL," +
-                "cpf TEXT NOT NULL," +
+                "cpf_cnpj TEXT NOT NULL UNIQUE," +   // CPF ou CNPJ
                 "email TEXT NOT NULL UNIQUE," +
-                "senha TEXT NOT NULL)");
-
-        db.execSQL("CREATE TABLE IF NOT EXISTS animais (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "nome TEXT," +
-                "idade TEXT," +
-                "especie TEXT," +
-                "porte TEXT)");
+                "senha TEXT NOT NULL," +
+                "data_nascimento TEXT," +             // para PF
+                "telefone TEXT," +
+                "razao_social TEXT," +                // para PJ
+                "nome_fantasia TEXT," +               // para PJ
+                "inscricao_estadual TEXT)");          // para PJ
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS contatos");
         db.execSQL("DROP TABLE IF EXISTS usuarios");
-        db.execSQL("DROP TABLE IF EXISTS animais");
         onCreate(db);
     }
 }
