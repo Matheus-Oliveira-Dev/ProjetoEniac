@@ -46,7 +46,7 @@ public class BancoControllerUsuarios {
     }
 
     // Consulta login com email e senha
-    public Cursor ConsultaDadosLogin(String email, String senha, String tipoUsuario) {
+    public Cursor ConsultaDadosLogin(String email, String senha) {
         String[] campos = {
                 "id", "tipo", "nome", "documento", "email", "senha",
                 "data_nasc", "telefone", "razao_social", "nome_fantasia", "inscricao_estadual"
